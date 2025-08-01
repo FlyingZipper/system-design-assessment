@@ -3,7 +3,7 @@ import { VideoPlayer } from "@/components/common/VideoPlayer/VideoPlayer";
 import { VIDEOS } from "@/static/video";
 import { notFound } from "next/navigation";
 
-export default async function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
 
   const videoId = (await params).id; // Assuming the first slug is the video ID or identifier
 

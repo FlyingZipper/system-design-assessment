@@ -3,9 +3,9 @@ import { VideoPreviewCard } from "@/components/common/VideoPreviewCard/VideoPrev
 import { VIDEOS } from "@/static/video";
 
 
-export default async function Page({ params, searchParams }: { params: { slug: string[], }, searchParams: { search_query?: string } }) {
+export default async function Page({ params, searchParams }: { params: Promise<{ slug: string, }>, searchParams: Promise<{ search_query?: string }> }) {
 
-  let pagetitle = (await params).slug[0].split('-').join(' ');
+  let pagetitle = (await params).slug.split('-').join(' ');
 
   if (pagetitle === 'results') {
     pagetitle = `Search results for: ${(await searchParams).search_query || ''}`
