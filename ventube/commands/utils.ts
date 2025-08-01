@@ -1,8 +1,8 @@
 const path = require('path');
 
 export const getPath = (
-  { name, project = 'web', folder }:
-    { name: string, project: 'web' | 'sanity', folder: string }
+  { name, folder }:
+    { name: string, folder: string }
 ) => {
 
   name = name.charAt(0).toUpperCase() + name.slice(1);
@@ -10,8 +10,7 @@ export const getPath = (
   const filePath = path.join(
     __dirname,
     '..',
-    'apps',
-    project,
+    'app',
     'src',
     folder,
     name
