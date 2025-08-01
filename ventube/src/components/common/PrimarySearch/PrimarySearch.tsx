@@ -22,7 +22,7 @@ export const PrimarySearch = () => {
     const handleSuggestionClick = (suggestion: string) => {
         setSearchTerm(suggestion)
         setOpen(false)
-        router.push(ROUTES.search.url(searchTerm))
+        router.push(ROUTES.search.url(suggestion))
     }
 
     // ma

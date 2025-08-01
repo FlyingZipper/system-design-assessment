@@ -3,9 +3,14 @@ import { VideoPreviewCard } from "@/components/common/VideoPreviewCard/VideoPrev
 import { VIDEOS } from "@/static/video";
 
 
-export default async function Page({ params, searchParams }: { params: Promise<{ slug: string, }>, searchParams: Promise<{ search_query?: string }> }) {
+export default async function Page({ params, searchParams }: { params: Promise<{ slug: string[0], }>, searchParams: Promise<{ search_query?: string }> }) {
 
-  let pagetitle = (await params).slug.split('-').join(' ');
+
+  const slug = (await params).slug[0]; // Assuming the first slug is the video ID or identifier
+
+  console.log('slug', slug);
+
+  let pagetitle = slug.split('-').join(' ');
 
   if (pagetitle === 'results') {
     pagetitle = `Search results for: ${(await searchParams).search_query || ''}`
