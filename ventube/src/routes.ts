@@ -26,5 +26,10 @@ export const ROUTES = {
         url: "/subscriptions",
         icon: MonitorPlay
 
+    },
+    videoWatch: {
+        name: "Video Watch",
+        url: (videoId: string) => `/watch/${videoId}`,
+        icon: MonitorPlay
     }
 }

@@ -1,4 +1,3 @@
-import { VideoPreviewCard } from "@/components/common/VideoPreviewCard/VideoPreviewCard";
 
 export default function Home() {
 
@@ -20,27 +19,10 @@ export default function Home() {
     "language": "en"
   }
 
-  const videos = Array.from({ length: 10 }, (_, index) => ({
-    ...mockVideo,
-    id: `video_uuid_${index}`,
-    title: `Video Title ${index + 1}`,
-    description: `Description for video ${index + 1}`,
-    creator_name: `Creator ${index + 1}`,
-    view_count: Math.floor(Math.random() * 1000000),
-    like_count: Math.floor(Math.random() * 10000),
-    upload_timestamp: Date.now() / 1000 - (index * 86400), // Simulating daily uploads
-  }));
-
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-7" >
-
-        {videos.map((video, index) => (
-          <VideoPreviewCard
-            key={index}
-            {...video}
-          />
-        ))}
+        video
       </div>
     </>
   )

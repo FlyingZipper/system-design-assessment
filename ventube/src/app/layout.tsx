@@ -15,13 +15,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body
         className={cn(instrumentSans.className)}
       >
         <SiteLayout >
-          site
+          {children}
         </SiteLayout>
       </body>
     </html>
