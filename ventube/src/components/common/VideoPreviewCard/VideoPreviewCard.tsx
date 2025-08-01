@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
-import { Card, CardAction, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { ROUTES } from '@/routes';
+import { formatNumber } from '@/utils/formatNumber';
 import { Play } from 'lucide-react';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -9,27 +10,29 @@ type Props = {
     id: string;
     title: string;
     description: string;
-    creator_name: string;
-    creator_id: string;
+    creatorName: string;
+    creatorId: string;
     tags: string[];
     category: string;
     duration: number; // in seconds
-    view_count: number;
-    like_count: number;
-    upload_timestamp: number; // Unix timestamp
-    thumbnail_url: string;
-    video_url: string;
-    is_verified_creator: boolean;
+    viewCount: number;
+    likeCount: number;
+    uploadTimestamp: number; // Unix timestamp
+    thumbnailUrl: string;
+    videoUrl: string;
+    isVerifiedCreator: boolean;
     language: string; // ISO language code (e.g., "en", "es", "fr")
 }
 
-export const VideoPreviewCard: FC<Props> = ({ id, duration, title, description }) => {
+export const VideoPreviewCard: FC<Props> = ({ id, duration, title, description, viewCount, likeCount }) => {
 
     const formatDuration = (duration: number): string => {
         const minutes = Math.floor(duration / 60);
         const seconds = duration % 60;
         return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }
+
+    const truncateText = (text: string): string => text.substring(0, 200) + '...';
 
     return (
         <Link href={ROUTES.videoWatch.url(id)} >
@@ -43,9 +46,11 @@ export const VideoPreviewCard: FC<Props> = ({ id, duration, title, description }
                     </div>
                 </CardContent>
                 <CardHeader>
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>{description}</CardDescription>
-                    <CardAction>Card Action</CardAction>
+                    <CardTitle className='font-normal text-lg mb-1' >{title}</CardTitle>
+                    <CardDescription>{truncateText(description)}</CardDescription>
+                    <div className='text-xs' >
+                        <span>{`${formatNumber(viewCount)} views - ${(formatNumber(likeCount))} likes`}</span>
+                    </div>
                 </CardHeader>
             </Card>
         </Link>

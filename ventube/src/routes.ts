@@ -28,8 +28,10 @@ export const ROUTES = {
 
     },
     videoWatch: {
-        name: "Video Watch",
         url: (videoId: string) => `/watch/${videoId}`,
-        icon: MonitorPlay
+    },
+    search: {
+        name: "Search",
+        url: (searchQuery: string) => `/results?search_query=${searchQuery}`,
     }
 }

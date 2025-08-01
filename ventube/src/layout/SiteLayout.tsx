@@ -16,7 +16,7 @@ export const SiteLayout: FC<Props> = ({ children }) => {
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 w-full grow">
+                <header className="flex h-16 shrink-0 items-center gap-2 w-full">
                     <div className="flex items-center gap-2 px-4 flex-1">
                         <SidebarTrigger className="-ml-1" />
                         <PrimarySearch />
