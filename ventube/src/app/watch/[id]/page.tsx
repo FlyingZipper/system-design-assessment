@@ -16,7 +16,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   return (
     <>
       <div className="flex col justify-center" >
-        <div className="w-280" >
+        <div className="max-w-280 w-full" >
           <VideoPlayer />
           <VideoDetail {...video} />
         </div>
